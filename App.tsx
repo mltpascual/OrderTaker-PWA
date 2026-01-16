@@ -439,28 +439,37 @@ const Dashboard: React.FC = () => {
       <main className="max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-6">
         {activeTab === 'orders' ? (
           <div className="animate-in fade-in slide-in-from-bottom-2 duration-700">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 mb-8">
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 leading-tight">Today's Queue</h1>
-                <p className="text-slate-400 text-sm font-medium mt-1">{orders.length} orders total</p>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 border-b border-slate-100/50 pb-6 sm:pb-8">
+              <div className="space-y-1">
+                <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 leading-tight">
+                  Today's Queue
+                </h1>
+                <p className="text-slate-400 text-xs sm:text-sm font-medium flex items-center gap-2 mb-2 sm:mb-0">
+                  <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  {orders.length} {orders.length === 1 ? 'order' : 'orders'} total
+                </p>
               </div>
               <button
                 onClick={() => setIsOrderFormOpen(true)}
-                className="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all active:scale-95 w-full sm:w-auto"
+                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-indigo-100 transition-all active:scale-95 flex items-center justify-center gap-2"
               >
-                + New Order
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+                <span>New Order</span>
               </button>
             </div>
 
-            <div className="mb-8 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between border-b border-slate-100 pb-6">
-              <div className="flex gap-1 p-1 bg-slate-100/80 rounded-xl overflow-x-auto max-w-full scrollbar-hide">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 mt-8 mb-8">
+              <div className="flex items-center gap-2 pb-2 sm:pb-0 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
                 {(['today', 'pending', 'completed', 'summary'] as FilterOption[]).map((f) => (
                   <button
                     key={f}
                     onClick={() => setFilter(f)}
-                    className={`px-4 py-2 rounded-lg text-[11px] font-bold capitalize transition-all whitespace-nowrap ${filter === f ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                    className={`whitespace-nowrap px-4 py-2 rounded-lg font-bold text-[11px] transition-all ${filter === f
+                        ? 'bg-white text-indigo-600 shadow-sm border border-indigo-100'
+                        : 'text-slate-400 hover:text-slate-600'
+                      }`}
                   >
-                    {f === 'summary' ? 'Order Summary' : f}
+                    {f === 'summary' ? 'Order Summary' : f.charAt(0).toUpperCase() + f.slice(1)}
                   </button>
                 ))}
               </div>
