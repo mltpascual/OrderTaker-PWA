@@ -123,8 +123,8 @@ const OrderForm: React.FC<OrderFormProps> = ({ isOpen, onClose, onSubmit, menu, 
     }
   };
 
-  const labelStyle = "text-[9px] font-black text-slate-500 ml-1 uppercase tracking-[0.1em]";
-  const inputStyle = "w-full px-4 py-2 bg-slate-50 border-2 border-transparent focus:border-indigo-500 focus:bg-white rounded-xl outline-none transition-all text-slate-900 font-bold text-xs";
+  const labelStyle = "text-[11px] font-black text-slate-500 ml-1 uppercase tracking-wider";
+  const inputStyle = "w-full px-4 py-3 bg-slate-50 border-2 border-transparent focus:border-indigo-500 focus:bg-white rounded-xl outline-none transition-all text-slate-900 font-bold text-sm min-h-[48px]";
 
   return (
     <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center p-0 sm:p-4 animate-in fade-in duration-300">
@@ -132,21 +132,21 @@ const OrderForm: React.FC<OrderFormProps> = ({ isOpen, onClose, onSubmit, menu, 
 
       <div className="relative w-full max-w-lg bg-white sm:rounded-[2rem] rounded-t-[2rem] shadow-2xl border border-slate-200/60 overflow-hidden transform animate-in slide-in-from-bottom-6 duration-500 ease-out flex flex-col max-h-[95vh]">
 
-        <div className="px-6 pt-5 pb-2 flex justify-between items-center border-b border-slate-50 shrink-0">
+        <div className="px-6 pt-6 pb-3 flex justify-between items-center border-b border-slate-50 shrink-0">
           <div>
-            <h2 className="text-lg font-black text-slate-900 tracking-tight">
+            <h2 className="text-xl font-black text-slate-900 tracking-tight">
               {initialData ? 'Edit Order' : 'New Order'}
             </h2>
-            <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-0.5">Bespoke Bakery Selection</p>
+            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mt-0.5">Bespoke Bakery Selection</p>
           </div>
-          <button onClick={onClose} className="p-1.5 rounded-lg bg-slate-50 text-slate-400 hover:text-slate-600 transition-all active:scale-90">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+          <button onClick={onClose} className="p-2 rounded-xl bg-slate-50 text-slate-400 hover:text-slate-600 transition-all active:scale-90">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto px-6 pb-6 pt-3 space-y-3 scrollbar-hide">
+        <div className="flex-1 overflow-y-auto px-6 pb-6 pt-4 space-y-5 scrollbar-hide">
 
-          <div className="space-y-1">
+          <div className="space-y-2">
             <label className={labelStyle}>Customer Name</label>
             <input
               autoFocus
@@ -158,14 +158,14 @@ const OrderForm: React.FC<OrderFormProps> = ({ isOpen, onClose, onSubmit, menu, 
             />
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-2">
             <label className={labelStyle}>Select Item</label>
             <div className="relative group">
               <select
                 required
                 value={selectedCakeId}
                 onChange={(e) => setSelectedCakeId(e.target.value)}
-                className={`${inputStyle} appearance-none pr-10 ${selectedCakeId === '' ? 'text-slate-400' : 'text-slate-900'}`}
+                className={`${inputStyle} appearance-none pr-12 ${selectedCakeId === '' ? 'text-slate-400' : 'text-slate-900'}`}
               >
                 <option value="" disabled>Select Item</option>
                 {menu.map((cake) => (
@@ -174,26 +174,26 @@ const OrderForm: React.FC<OrderFormProps> = ({ isOpen, onClose, onSubmit, menu, 
                 <option value="custom" className="text-indigo-600 font-bold">✨ Custom Item</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" /></svg>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" /></svg>
               </div>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-3">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {isCustom && (
-              <div className="grid grid-cols-2 gap-2 animate-in slide-in-from-top-2">
-                <div className="space-y-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 animate-in slide-in-from-top-2">
+                <div className="space-y-2">
                   <label className={labelStyle}>Item Name</label>
                   <input
                     required
                     type="text"
                     placeholder="Name"
                     value={customName}
-                    onChange={(e) => setCustomName(e.target.value)}
+                    onChange={(e) => setCustomerName(e.target.value)}
                     className={inputStyle}
                   />
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <label className={labelStyle}>Price</label>
                   <input
                     required
@@ -209,8 +209,8 @@ const OrderForm: React.FC<OrderFormProps> = ({ isOpen, onClose, onSubmit, menu, 
               </div>
             )}
 
-            <div className="grid grid-cols-2 gap-2">
-              <div className="space-y-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
                 <label className={labelStyle}>Pickup Date</label>
                 <input
                   type="date"
@@ -218,54 +218,54 @@ const OrderForm: React.FC<OrderFormProps> = ({ isOpen, onClose, onSubmit, menu, 
                   min={minDate}
                   value={pickupDate}
                   onChange={(e) => setPickupDate(e.target.value)}
-                  className={inputStyle}
+                  className={`${inputStyle} block`}
                   style={{ colorScheme: 'light' }}
                 />
               </div>
-              <div className="space-y-1">
+              <div className="space-y-2">
                 <label className={labelStyle}>Pickup Time</label>
                 <input
                   type="time"
                   required
                   value={pickupTime}
                   onChange={(e) => setPickupTime(e.target.value)}
-                  className={inputStyle}
+                  className={`${inputStyle} block`}
                   style={{ colorScheme: 'light' }}
                 />
               </div>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-2">
               <label className={labelStyle}>Quantity</label>
-              <div className="flex items-center bg-slate-50 rounded-xl border-2 border-transparent focus-within:border-indigo-500 overflow-hidden">
-                <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-5 py-2 text-slate-400 hover:bg-slate-100 transition-colors">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M20 12H4" /></svg>
+              <div className="flex items-center bg-slate-50 rounded-xl border-2 border-transparent focus-within:border-indigo-500 overflow-hidden min-h-[52px]">
+                <button type="button" onClick={() => setQuantity(Math.max(1, quantity - 1))} className="px-6 py-3 text-slate-400 hover:bg-slate-100 transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M20 12H4" /></svg>
                 </button>
                 <input
                   type="number"
                   inputMode="numeric"
                   value={quantity || ''}
                   onChange={handleQuantityChange}
-                  className="flex-1 text-center font-black text-base text-slate-900 bg-transparent outline-none w-14"
+                  className="flex-1 text-center font-black text-xl text-slate-900 bg-transparent outline-none w-14"
                 />
-                <button type="button" onClick={() => setQuantity(quantity + 1)} className="px-5 py-2 text-slate-400 hover:bg-slate-100 transition-colors">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
+                <button type="button" onClick={() => setQuantity(quantity + 1)} className="px-6 py-3 text-slate-400 hover:bg-slate-100 transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
                 </button>
               </div>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className={labelStyle}>Source</label>
-                <span className="text-[7px] font-black text-rose-500 uppercase tracking-tighter">Required</span>
+                <span className="text-[9px] font-black text-rose-500 uppercase tracking-tighter">Required</span>
               </div>
-              <div className="grid grid-cols-4 gap-1.5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {SOURCES.map(s => (
                   <button
                     key={s}
                     type="button"
                     onClick={() => setSource(s)}
-                    className={`py-1.5 px-0.5 rounded-lg text-[8px] font-black uppercase tracking-tight border-2 transition-all ${source === s ? 'bg-indigo-600 border-indigo-600 text-white shadow-md' : 'bg-slate-50 border-transparent text-slate-400 hover:border-slate-200'}`}
+                    className={`py-3 px-1 rounded-xl text-[10px] font-black uppercase tracking-wider border-2 transition-all ${source === s ? 'bg-indigo-600 border-indigo-600 text-white shadow-md' : 'bg-slate-50 border-transparent text-slate-400 hover:border-slate-200'}`}
                   >
                     {s}
                   </button>
@@ -273,31 +273,31 @@ const OrderForm: React.FC<OrderFormProps> = ({ isOpen, onClose, onSubmit, menu, 
               </div>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className={labelStyle}>Notes</label>
-                <span className="text-[7px] font-black text-slate-400 uppercase tracking-tighter italic">Optional</span>
+                <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter italic">Optional</span>
               </div>
               <textarea
-                rows={1}
+                rows={2}
                 placeholder="Special instructions..."
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                className="w-full px-4 py-2 bg-slate-50 border-2 border-transparent focus:border-indigo-500 focus:bg-white rounded-xl outline-none font-medium text-xs resize-none transition-all"
+                className="w-full px-4 py-3 bg-slate-50 border-2 border-transparent focus:border-indigo-500 focus:bg-white rounded-xl outline-none font-semibold text-sm resize-none transition-all"
               />
             </div>
 
-            <div className="p-3 bg-slate-900 rounded-[1.2rem] flex items-center justify-between text-white shadow-xl mt-1">
+            <div className="p-4 bg-slate-900 rounded-[1.5rem] flex items-center justify-between text-white shadow-xl mt-2">
               <div>
-                <p className="text-[7px] font-black text-slate-500 uppercase tracking-widest">Grand Total</p>
-                <p className="text-xl font-black text-white tracking-tighter">${total.toFixed(2)}</p>
+                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Grand Total</p>
+                <p className="text-2xl font-black text-white tracking-tighter">${total.toFixed(2)}</p>
               </div>
               <button
                 type="submit"
                 disabled={!isFormValid}
-                className={`font-black px-5 py-2.5 rounded-lg text-[10px] uppercase tracking-widest shadow-lg shadow-indigo-900/50 transition-all ${!isFormValid ? 'bg-slate-500 cursor-not-allowed opacity-50' : 'bg-indigo-600 text-white hover:bg-indigo-500 active:scale-95'}`}
+                className={`font-black px-6 py-4 rounded-xl text-xs uppercase tracking-[0.2em] shadow-lg shadow-indigo-900/50 transition-all ${!isFormValid ? 'bg-slate-500 cursor-not-allowed opacity-50' : 'bg-indigo-600 text-white hover:bg-indigo-500 active:scale-95'}`}
               >
-                {initialData ? 'Update' : 'Confirm'}
+                {initialData ? 'Update' : 'Confirm Order'}
               </button>
             </div>
           </form>

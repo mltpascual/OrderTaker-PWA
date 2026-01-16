@@ -439,33 +439,33 @@ const Dashboard: React.FC = () => {
       <main className="max-w-5xl mx-auto py-8 sm:py-10 px-4 sm:px-6">
         {activeTab === 'orders' ? (
           <div className="animate-in fade-in slide-in-from-bottom-2 duration-700">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 border-b border-slate-100/50 pb-6 sm:pb-8">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-slate-100/50 pb-8">
               <div className="space-y-1">
-                <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 leading-tight">
+                <h1 className="text-3xl sm:text-4xl font-black tracking-tighter text-slate-900 drop-shadow-sm">
                   Today's Queue
                 </h1>
-                <p className="text-slate-400 text-xs sm:text-sm font-medium flex items-center gap-2 mb-2 sm:mb-0">
-                  <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <p className="text-slate-400 text-sm font-medium flex items-center gap-2 mt-1">
+                  <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   {orders.length} {orders.length === 1 ? 'order' : 'orders'} total
                 </p>
               </div>
               <button
                 onClick={() => setIsOrderFormOpen(true)}
-                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-indigo-100 transition-all active:scale-95 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-xl font-bold text-sm shadow-xl shadow-indigo-100 transition-all active:scale-95 flex items-center justify-center gap-2 border-b-4 border-indigo-800"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" /></svg>
                 <span>New Order</span>
               </button>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 mt-8 mb-8">
-              <div className="flex items-center gap-2 pb-2 sm:pb-0 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 mt-10 mb-8">
+              <div className="flex items-center gap-3 pb-2 sm:pb-0 overflow-x-auto scrollbar-hide -mx-6 px-6 sm:mx-0 sm:px-0">
                 {(['today', 'pending', 'completed', 'summary'] as FilterOption[]).map((f) => (
                   <button
                     key={f}
                     onClick={() => setFilter(f)}
-                    className={`whitespace-nowrap px-4 py-2 rounded-lg font-bold text-[11px] transition-all ${filter === f
-                        ? 'bg-white text-indigo-600 shadow-sm border border-indigo-100'
+                    className={`whitespace-nowrap px-6 py-3 rounded-xl font-bold text-xs transition-all ${filter === f
+                        ? 'bg-white text-indigo-600 shadow-sm border-b-2 border-indigo-600'
                         : 'text-slate-400 hover:text-slate-600'
                       }`}
                   >

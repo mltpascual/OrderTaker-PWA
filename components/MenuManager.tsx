@@ -161,7 +161,7 @@ const MenuManager: React.FC<MenuManagerProps> = ({ menu, onAdd, onRemove, onUpda
 
             <div className="flex items-end justify-between">
               <span className="text-2xl font-black text-indigo-600 tracking-tight">${cake.basePrice.toFixed(2)}</span>
-              <span className="text-[9px] font-black text-slate-300 uppercase tracking-widest mb-1">Base Price</span>
+              <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.15em]">Base Price</span>
             </div>
           </div>
         ))}
