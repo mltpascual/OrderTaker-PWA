@@ -6,6 +6,19 @@ OrderTaker is a Progressive Web Application (PWA) designed to streamline order m
 
 ---
 
+## 📱 Showcase
+
+Checkout the app in different views:
+
+### Desktop & Tablet
+![Desktop View](screenshots/desktop.png)
+![Tablet View](screenshots/tablet.png)
+
+### Mobile View
+<img src="screenshots/mobile.png" width="300" alt="Mobile View">
+
+---
+
 ## ✨ Features
 
 ### 🔐 Authentication & User Management
