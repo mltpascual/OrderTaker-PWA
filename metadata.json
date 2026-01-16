@@ -1,0 +1,7 @@
+{
+  "name": "OrderTaker PWA",
+  "description": "A professional PWA for order management with Firebase authentication.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
